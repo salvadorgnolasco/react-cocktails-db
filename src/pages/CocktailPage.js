@@ -40,15 +40,18 @@ function CocktailPage() {
 
     <section className="w-100 d-flex justify-content-center">
       <div className="w-75 justify-content-center">
+        <h3 className="text-center mt-3">{drink.name}</h3>
         <article className="single-cocktail">
           <img src={drink.img} alt={drink.name}></img>
           <div className="summary">
-            <h3>{drink.name}</h3>
+
+            <h6>Ingredients: </h6>
             <ul>
               {ingredients}
             </ul>
           </div>
           <div className="preparation">
+            <h6>Preparation: </h6>
             <ul>
               {instructions}
             </ul>
