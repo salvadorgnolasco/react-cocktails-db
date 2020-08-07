@@ -35,3 +35,19 @@
   color: var(--main-orange);
   font-weight: bold;
 }
+
+.single-cocktail {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  padding: 0 1rem;
+}
+
+.single-cocktail img {
+  width: 25rem;
+  margin-right: 1rem;
+}
+
+.single-cocktail .preparation {
+  margin-left: 1rem;
+}
