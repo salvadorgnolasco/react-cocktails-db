@@ -32,6 +32,10 @@ function CocktailPage() {
     }
   );
 
+
+  const ingredients = drink.ingredients.filter(item => item !== null).map(item => <li>{item}</li>);
+  const instructions = drink.instructions.map(item => <li>{item}</li>);
+
   return (
 
     <section className="w-100 d-flex justify-content-center">
@@ -40,10 +44,14 @@ function CocktailPage() {
           <img src={drink.img} alt={drink.name}></img>
           <div className="summary">
             <h3>{drink.name}</h3>
-            <p>{drink.ingredients}</p>
+            <ul>
+              {ingredients}
+            </ul>
           </div>
           <div className="preparation">
-            {drink.instructions}
+            <ul>
+              {instructions}
+            </ul>
           </div>
         </article>
       </div>
