@@ -20,11 +20,14 @@ function Home() {
           setCocktails(mapResponseSummary(drinks));
         } catch (error) {
           console.log(error);
-          setCocktails([]);
         }
       }
-
       getDrinks();
+
+      return function cleanup(){
+        
+      }
+
     },
     [searchTerm]
   );

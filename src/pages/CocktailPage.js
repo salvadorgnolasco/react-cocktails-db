@@ -6,40 +6,38 @@ import React from 'react';
 
 function CocktailPage() {
 
+  const { id } = useParams();
   const [drink, setDrink] = React.useState({
-    id: 0,
+    id: id,
     name: "",
     ingredients: [],
     instructions: [],
   });
 
-  const { id } = useParams();
-
   React.useEffect(
     () => {
-      async function getCocktail() {
+      async function getCocktail() {      
         try {
-          const cocktail = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+          const cocktail = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.id}`);
           const data = await cocktail.json();
           const { drinks } = data;
-          const drink = mapResponseDetailed(drinks)[0];
-          setDrink(drink);
+          const oneDrink = mapResponseDetailed(drinks)[0];
+          setDrink(oneDrink);
         } catch (error) {
           console.log(error);
         }
       }
       getCocktail();
-    }
-  );
+    });
 
 
-  const ingredients = drink.ingredients.filter(item => item !== null).map(item => <li>{item}</li>);
-  const instructions = drink.instructions.map(item => <li>{item}</li>);
+  const ingredients = drink.ingredients.filter(item => item !== null).map((item, i) => <li key={i}>{item}</li>);
+  const instructions = drink.instructions.map((item, i) => <li key={i}>{item}</li>);
 
   return (
 
     <section className="w-100 d-flex justify-content-center">
-      <div className="w-75 justify-content-center">
+      <div className="w-75 ">
         <h3 className="text-center mt-3">{drink.name}</h3>
         <article className="single-cocktail">
           <img src={drink.img} alt={drink.name}></img>
@@ -52,8 +50,8 @@ function CocktailPage() {
           </div>
           <div className="preparation">
             <h6>Preparation: </h6>
-            <ul>
-              {instructions}
+            <ul className="text-justify">
+              {instructions[0]}
             </ul>
           </div>
         </article>
