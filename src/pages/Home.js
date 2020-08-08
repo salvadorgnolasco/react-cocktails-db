@@ -24,10 +24,6 @@ function Home() {
       }
       getDrinks();
 
-      return function cleanup(){
-        
-      }
-
     },
     [searchTerm]
   );
